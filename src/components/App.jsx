@@ -21,8 +21,8 @@ export default class App extends Component {
     */
 
     render() {
-        let formattedNumberUS = this.formattedNumberUS(this.state.rawDigitsString);
-        let formattedNumberValue = this.formattedNumberValue(this.state.rawDigitsString);
+        const formattedNumberUS = this.formattedNumberUS(this.state.rawDigitsString);
+        const formattedNumberValue = this.formattedNumberValue(this.state.rawDigitsString);
         return (
             <div className={styles.app}>
                 <div className="page-content">
@@ -34,7 +34,7 @@ export default class App extends Component {
     }
 
     didDeleteOccur(newNumber) {
-        const isNewNumShorter = newNumber.length < parseInt(this.state.rawDigitsString,10);
+        const isNewNumShorter = newNumber.length < (parseInt(this.state.rawDigitsString.length,10)+2) && newNumber.indexOf("(") > -1;
         const lastDigitDeleted = (newNumber.length === 2 && newNumber[0] === '(');
         return (isNewNumShorter || lastDigitDeleted);
     }
